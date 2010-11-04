@@ -7,12 +7,10 @@ import django
 
 DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
-#print sys.path
-print 0
-sys.path.insert(0,os.path.abspath(os.path.dirname(SITE_ROOT)))
-print 1
-print sys.path
-print 2
+SITE_PARENT=os.path.abspath(os.path.dirname(SITE_ROOT))
+EXTERNAL_APPS=os.path.join(SITE_ROOT,'external_apps')
+sys.path.insert(1,EXTERNAL_APPS)
+
 
 DEBUG = True
 TEMPLATE_DEBUG = True
@@ -22,6 +20,14 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+
+HAYSTACK_SITECONF = 'scisnippets.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = os.path.join(SITE_PARENT,'mysite_index')
+
+
+
+
 
 DATABASES = {
     'default': {
@@ -99,6 +105,7 @@ TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates')
 )
 
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -109,7 +116,11 @@ INSTALLED_APPS = (
     'django.contrib.syndication',
     'django.contrib.markup',
     'django.contrib.comments',
-    'scisnippets.djangosnippets.cab',
+    'external_apps.cab',
+    'external_apps.ratings',
+    'external_apps.haystack',
+    'external_apps.taggit'
+    #os.path.join(SITE_PARENT,'djangosnippets\cab'),
     #'cab',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
