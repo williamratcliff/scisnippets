@@ -93,6 +93,7 @@ INSTALLED_APPS = (
     'django.contrib.syndication',
     'django.contrib.markup',
     'django.contrib.comments',
+    r'..scisnippets/djangosnippets/cab',
     #'cab',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
