@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}{% if category %}{{ category.title }} {% endif %}Resources{% endblock %}
+
+{% block content_title %}{% if category %}{{ category.title }} {% endif %}Resources{% endblock %}
+
+{% block content %}
+  <ul style="list-style-type: none;">
+  {% for resource in object_list %}
+    <li style="clear: both;">{% include "resources/resource_snippet.html" %}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

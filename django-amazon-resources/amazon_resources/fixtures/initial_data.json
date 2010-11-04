@@ -1,0 +1,16 @@
+[
+  {
+    "pk": 1, 
+    "model": "amazon_resources.mediatype", 
+    "fields": {
+      "title": "Book"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "amazon_resources.mediatype", 
+    "fields": {
+      "title": "DVD"
+    }
+  }
+]

@@ -1,0 +1,45 @@
+{% extends "admin/change_form.html" %}
+{% load i18n adminmedia %}
+
+{% block bodyclass %}amazon_resources-add-resource{% endblock %}
+
+{% block breadcrumbs %}{% if not is_popup %}
+<div class="breadcrumbs">
+     <a href="../../../">{% trans "Home" %}</a> &rsaquo;
+     <a href="../../">Amazon Resources</a> &rsaquo; 
+     <a href="../">Amazon Resource</a> &rsaquo; 
+     Add resource
+</div>
+{% endif %}{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    <p class="description">This will import a new resource from Amazon.</p>
+    <p class="description">Find the product on Amazon then paste the product's
+    into the field below.</p>
+
+    <form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+      <div>
+        {% if form.errors %}
+            <p class="errornote">Please correct the error{{ form.errors|pluralize }} below.</p>
+        {% endif %}
+        {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+        {% endif %}
+      </div>
+      <fieldset class="module aligned">
+        <div class="form-row{{ form.url.errors|yesno:" errors," }} url">
+          <div>
+            {{ form.url.errors }}
+            <label for="id_url" class="required">URL:</label>
+            {{ form.url }}
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="submit-row" >
+        <input type="submit" value="Import resource" class="default" />
+      </div>
+    </form>
+  </div>
+{% endblock %}

@@ -1,4 +1,18 @@
 # Django settings for scisnippets project.
+import os,sys
+import django
+#calculated paths for django and the site
+#used as starting points for various other paths
+
+
+DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+#print sys.path
+print 0
+sys.path.insert(0,os.path.abspath(os.path.dirname(SITE_ROOT)))
+print 1
+print sys.path
+print 2
 
 DEBUG = True
 TEMPLATE_DEBUG = True
@@ -12,7 +26,8 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'c:\scisnippets\scisnippets\scisnippets.db',                      # Or path to database file if using sqlite3.
+        #'NAME': 'c:\scisnippets\scisnippets\scisnippets.db',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(SITE_ROOT, 'db'),
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -50,7 +65,7 @@ MEDIA_ROOT = ''
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = os.path.join(SITE_ROOT, 'media')
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -81,6 +96,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(SITE_ROOT, 'templates')
 )
 
 INSTALLED_APPS = (
@@ -93,7 +109,7 @@ INSTALLED_APPS = (
     'django.contrib.syndication',
     'django.contrib.markup',
     'django.contrib.comments',
-    r'..scisnippets/djangosnippets/cab',
+    'scisnippets.djangosnippets.cab',
     #'cab',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Resource Categories{% endblock %}
+
+{% block content_title %}Resource Categories{% endblock %}
+
+{% block content %}
+  <ul id="resource_categories">
+  {% for category in object_list %}
+    <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}
