@@ -65,7 +65,7 @@
     <li><a href="#comments">Comment on this snippet</a></li>
   </ul>
 {% endblock %}
-
+{% comment %}
 {% block extra_content %}
   <div id="comments">
     <h2>Comments</h2>
@@ -81,3 +81,4 @@
     {% render_comment_form for object %}
   </div>
 {% endblock %}
+{% endcomment %}
