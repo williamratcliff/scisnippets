@@ -43,7 +43,7 @@ def add_snippet(request):
             return HttpResponseRedirect(new_snippet.get_absolute_url())
     else:
         form = forms.AddSnippetForm()
-    return render_to_response('cab/add_snippet_form.html',
+    return render_to_response('extended_apps/cab/add_snippet_form.html',
                               { 'form': form },
                               context_instance=RequestContext(request))
 add_snippet = login_required(add_snippet)
